@@ -1,20 +1,36 @@
 import { HeaderContainer } from './styles'
 
 import Logo from '../../assets/Logo.svg'
-import { Timer, Scroll } from '@phosphor-icons/react'
-import { NavLink } from 'react-router-dom'
+import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import { LocationButton } from './LocationButton/styles';
+import { CartButton } from './Cartbutton/styles';
+import { NavLink } from 'react-router-dom';
+
+
+const currentCity = 'Cidade dos Funcionários';
+const cartTotalItems = 0;
 
 export function Header() {
   return (
     <HeaderContainer>
       <img src={Logo} alt="" />
       <nav>
-        <NavLink to="/" title="Timer">
-          <Timer size={24} />
-        </NavLink>
-        <NavLink to="/history" title="History">
-          <Scroll size={24} />
-        </NavLink>
+        {/* <LocationButton type='button' title="History">
+          <MapPin size={24} />
+        </LocationButton> */}
+        <LocationButton onMouseEnter={() => {console.log('DisplayCartSummary')}}
+        >
+          <MapPin size={24}/> <span>{currentCity}</span>
+        </LocationButton>
+
+        <NavLink to={'/checkout'} title='checkout'>
+          <CartButton>
+            
+              <ShoppingCart size={24}/> <span>{cartTotalItems}</span>
+            
+          </CartButton>
+          </NavLink>
+        
       </nav>
     </HeaderContainer>
   )
