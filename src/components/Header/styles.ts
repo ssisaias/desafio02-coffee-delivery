@@ -20,6 +20,7 @@ export const HeaderContainer = styled.header`
       background-color: ${(props) => props.theme['yellow']};;
       color: ${(props) => props.theme['white']};;
 
+      }
     }
   }
 `
