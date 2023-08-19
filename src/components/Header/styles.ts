@@ -5,6 +5,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  img{
+    margin-right: 8px;
+  }
+
   nav {
     display: flex;
     gap: 0.5rem;

@@ -9,9 +9,8 @@ export const LocationButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: flex;
-  max-width: 200px;
-  overflow: hidden;
   justify-content: center;
+  
 
   span {
     font-family: 'Roboto', sans-serif;
