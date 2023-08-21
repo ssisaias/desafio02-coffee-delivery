@@ -45,11 +45,6 @@ export const BannerContainer = styled.div`
         color: ${props => props.theme['base-subtitle']};
     }
 
-    table {
-        display: table-cell;
-        column-count: 2;
-        padding: 1rem;
-    }
 `
 export const RoundCircle = styled.div<{ $themeBgColor?: string; }>`
     width: 2rem;
@@ -63,4 +58,19 @@ export const RoundCircle = styled.div<{ $themeBgColor?: string; }>`
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     margin-right: 8px;
+`
+
+export const TwoColumnsTable = styled.div`
+    
+
+    table {
+        display: block;
+        columns: 2;
+        -moz-column-count: 2;
+        padding: 1rem;
+    }
+
+    tbody, tr {
+        display: block;
+    }
 `

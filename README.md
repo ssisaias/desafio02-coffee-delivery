@@ -8,4 +8,5 @@ pnpm dev
 ## Technologies / Libs
 
  - React Router DOM
+ - Styled Components
  
