@@ -23,9 +23,10 @@ export const CCList = styled.div`
     flex-direction: row;
     margin-bottom: 18px;
     gap: 1.8rem;
+    max-width: 100%;
+    flex-wrap: wrap;
 
     @media (max-width: 768px) {
         flex-direction: column;
-        width: 100%;
     }
 `
