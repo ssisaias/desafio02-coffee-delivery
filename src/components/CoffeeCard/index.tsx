@@ -1,8 +1,10 @@
+import { ShoppingCart } from "@phosphor-icons/react"
 import { CoffeeInterface } from "../../interface/interfaces"
 import images from "../../util/imageResolver"
+import { SquareIconBg } from "../ui/IconBackground/styles"
 import { CCHeaderImg } from "./coffeeCardImgHeader/styles"
 import { CCHeaderTag, CCHeaderTags } from "./coffeeCardTags/styles"
-import { CoffeeCardContainer } from "./styles"
+import { CoffeeCardContainer, CCNameDescriptionContainer } from "./styles"
 
 interface CoffeeCardProps {
     coffeeItem: CoffeeInterface
@@ -21,6 +23,10 @@ export function CoffeeCard({coffeeItem}: CoffeeCardProps){
                     return <CCHeaderTag>{tag}</CCHeaderTag>
                 })}
             </CCHeaderTags>
+            <CCNameDescriptionContainer>
+                <h4>{coffeeItem.name}</h4>
+                <p>{coffeeItem.description}</p>
+            </CCNameDescriptionContainer>
         </CoffeeCardContainer>
     )
 }
