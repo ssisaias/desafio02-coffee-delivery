@@ -1,16 +1,12 @@
+import { BannerContainer, TwoColumnsTable } from "./styles";
+import BannerCup from '../../assets/banner_cup.svg'
 import { ShoppingCart, Timer, Package, Coffee } from "@phosphor-icons/react";
 import { RoundIconBg } from "../ui/IconBackground/styles";
 
-export function Banner(){
+export function Banner() {
     return (
         <BannerContainer>
-            <IconContext.Provider
-                value={{
-                    color: 'white',
-                    size: '1rem',
-                    weight: "fill",
-                }}
-            >
+
             <div>
                 <h1>Encontre o café perfeito <br /> para qualquer hora do dia</h1>
                 <span>Com o Cooffee Delivery você recebe seu café onde estiver, a qualquer hora</span>
