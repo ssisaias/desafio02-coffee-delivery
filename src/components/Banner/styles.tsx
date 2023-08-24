@@ -46,19 +46,6 @@ export const BannerContainer = styled.div`
     }
 
 `
-export const RoundCircle = styled.div<{ $themeBgColor?: string; }>`
-    width: 2rem;
-    height: 2rem;
-    background-color: ${props => (props.$themeBgColor ? props.theme[props.$themeBgColor] : props.theme['base-text'])};
-    border-radius: 66.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-right: 8px;
-`
 
 export const TwoColumnsTable = styled.div`
     
