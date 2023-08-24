@@ -22,5 +22,21 @@
         "price": 9.90,
         "tags": ["tradicional"],
         "image": "Expressocremoso"
+    },
+    {
+        "id": "4",
+        "name": "Expresso Gelado",
+        "description": "Bebida preparada com café expresso e cubos de gelo",
+        "price": 9.90,
+        "tags": ["tradicional", "gelado"],
+        "image": "Cafegelado"
+    },
+    {
+        "id": "5",
+        "name": "Café com Leite",
+        "description": "Meio a meio de expresso tradicional com leite vaporizado",
+        "price": 9.90,
+        "tags": ["tradicional", "com leite"],
+        "image": "Cafecomleite"
     }
 ]
