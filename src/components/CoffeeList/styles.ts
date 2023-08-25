@@ -22,7 +22,7 @@ export const CCList = styled.div`
     display: flex;
     flex-direction: row;
     margin-bottom: 18px;
-    gap: 1.8rem;
+    gap: 1.6rem;
     max-width: 100%;
     flex-wrap: wrap;
 
