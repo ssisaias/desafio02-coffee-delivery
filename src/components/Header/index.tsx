@@ -13,7 +13,9 @@ const cartTotalItems = 0;
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={Logo} alt="" />
+      <NavLink to={'/'} title='checkout'>
+        <img src={Logo} alt="home" />
+      </NavLink>
       <nav>
         {/* <LocationButton type='button' title="History">
           <MapPin size={24} />

@@ -1,4 +1,4 @@
-import { Minus, MinusSquare, Plus, PlusSquare, ShoppingCart } from "@phosphor-icons/react"
+import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react"
 import { CoffeeInterface } from "../../interface/interfaces"
 import images from "../../util/imageResolver"
 import { SquareIconBg } from "../ui/IconBackground/styles"
