@@ -12,6 +12,32 @@ export const defaultTheme = {
   'base-text': '#574F4D',
   'base-subtitle': '#403937',
   'base-title': '#272221',
+  'toggle-button': '#4B2995',
+
+  'purple-dark': '#4B2995',
+  'purple': '#8047F8',
+  'purple-light': '#EBE5F9',
+
+  'yellow-dark': '#DBAC2C',
+  'yellow': '#C47F17',
+  'yellow-light': '#F1E9C9',
+}
+
+export const darkTheme = {
+  white: '#FFF',
+
+  'background': '#000',
+
+  'green-300': '#00B37E',
+  'base-card': '#F3F2F2',
+  'base-input': '#EDEDED',
+  'base-button': '#E6E5E5',
+  'base-hover': '#D7D5D5',
+  'base-label': '#8D8686',
+  'base-text': '#574F4D',
+  'base-subtitle': '#403937',
+  'base-title': '#272221',
+  'toggle-button': '#FFF',
 
   'purple-dark': '#4B2995',
   'purple': '#8047F8',

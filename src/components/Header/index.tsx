@@ -7,7 +7,7 @@ import { CartButton } from './Cartbutton/styles';
 import { NavLink } from 'react-router-dom';
 
 
-const currentCity = 'Cidade dos Funcionários';
+const currentCity = `Uh, sama lama duma lama, you assumin' I'm a human`;
 const cartTotalItems = 0;
 
 export function Header() {
