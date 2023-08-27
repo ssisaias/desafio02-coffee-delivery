@@ -1,4 +1,6 @@
-export const defaultTheme = {
+import { DefaultTheme } from "styled-components"
+
+export const defaultTheme: DefaultTheme = {
   white: '#FFF',
 
   'background': '#FAFAFA',
@@ -23,7 +25,7 @@ export const defaultTheme = {
   'yellow-light': '#F1E9C9',
 }
 
-export const darkTheme = {
+export const darkTheme: DefaultTheme = {
   white: '#FFF',
 
   'background': '#000',
@@ -37,7 +39,7 @@ export const darkTheme = {
   'base-text': '#574F4D',
   'base-subtitle': '#403937',
   'base-title': '#272221',
-  'toggle-button': '#FFF',
+  'toggle-button': '#4B2995',
 
   'purple-dark': '#4B2995',
   'purple': '#8047F8',

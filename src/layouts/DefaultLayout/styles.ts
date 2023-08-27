@@ -9,3 +9,9 @@ export const LayoutContainer = styled.div`
     padding: 0 4rem;
   }
 `
+export const ThemeToggleFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 6px 6px 0;
+`

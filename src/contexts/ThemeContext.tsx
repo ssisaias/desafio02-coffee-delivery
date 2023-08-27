@@ -1,7 +1,9 @@
+import { DefaultTheme } from "styled-components";
 import { darkTheme, defaultTheme } from "../styles/themes/default";
 import { createContext, useState } from "react";
 
 interface ThemeContextType {
+    currentTheme: DefaultTheme,
     changeTheme: (theme: string) => void
 }
 
@@ -12,7 +14,7 @@ interface ThemeContextProviderProps{
 }
 
 export function ThemeContextProvider({children}: ThemeContextProviderProps){
-    const [, setTheme] = useState(defaultTheme);
+    const [curTheme, setTheme] = useState(defaultTheme);
 
     function changeTheme(theme: string){
         if(theme !== 'dark'){
@@ -24,6 +26,7 @@ export function ThemeContextProvider({children}: ThemeContextProviderProps){
 
     return (
         <ThemeContext.Provider value={{
+            currentTheme:curTheme,
             changeTheme
         }}>
             {children}

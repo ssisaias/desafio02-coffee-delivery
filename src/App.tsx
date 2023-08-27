@@ -1,22 +1,20 @@
 import { ThemeProvider } from 'styled-components'
 import { Router } from './Router'
-import { defaultTheme, darkTheme } from './styles/themes/default'
 import { BrowserRouter } from 'react-router-dom'
 import { GlobalStyle } from './styles/global'
-import { ThemeContextProvider } from './contexts/ThemeContext'
+import { ThemeContext } from './contexts/ThemeContext'
+import { useContext } from 'react'
 
 function App() {
-  const getTheme = 
+  const { currentTheme } = useContext(ThemeContext); // this only works because of the AppThemeWrapper()
+
   return (
-    <ThemeContextProvider>
-      <ThemeProvider theme={defaultTheme}>
-        <BrowserRouter>
-          
-            <Router/>
-        </BrowserRouter>
-        <GlobalStyle />
-      </ThemeProvider>
-    </ThemeContextProvider>
+    <ThemeProvider theme={currentTheme}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+      <GlobalStyle />
+    </ThemeProvider>
   )
 }
 

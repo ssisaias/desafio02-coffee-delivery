@@ -9,4 +9,6 @@ pnpm dev
 
  - React Router DOM
  - Styled Components
- 
+
+## bonus feats
+ - dark mode

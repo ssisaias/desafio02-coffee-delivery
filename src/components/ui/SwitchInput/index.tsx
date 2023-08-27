@@ -1,4 +1,5 @@
 
+import { Moon, Sun } from "@phosphor-icons/react";
 import styled from "styled-components";
 
 const SwitchInput = styled.input`
@@ -13,7 +14,7 @@ const SwitchLabel = styled.label`
   justify-content: space-between;
   cursor: pointer;
   width: 2.5rem;
-  height: 25px;
+  height: 23px;
   border-radius: 100px;
   border: 2px solid ${props => props.theme['toggle-button']};
   position: relative;
@@ -39,6 +40,10 @@ const SwitchButton = styled.span`
   ${SwitchLabel}:active & {
     width: 25px;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 interface SwitchInterface {
@@ -51,14 +56,14 @@ const Switch = ({ id, toggled, onChange } : SwitchInterface) => {
   return (
     <>
       <SwitchInput
-        className="switch-checkbox"
         id={id}
         type="checkbox"
         checked={toggled}
         onChange={onChange}
       />
-      <SwitchLabel className="switch-label" htmlFor={id}>
-        <SwitchButton className="switch-button">
+      <SwitchLabel htmlFor={id}>
+        <SwitchButton>
+          {toggled?<Moon color="#DBAC2C" weight="fill"/>:<Sun color="white"/>}
         </SwitchButton>
       </SwitchLabel>
     </>
