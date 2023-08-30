@@ -18,7 +18,7 @@ const SwitchLabel = styled.label`
   border-radius: 100px;
   border: 2px solid ${props => props.theme['toggle-button']};
   position: relative;
-  transition: background-color 0.2s;
+  transition: background-color 0.5s;
 `;
 
 const SwitchButton = styled.span`
@@ -29,7 +29,7 @@ const SwitchButton = styled.span`
   width: 1.3rem;
   height: 20px;
   border-radius: 45px;
-  transition: 0.2s;
+  transition: 0.5s;
   background: ${props => props.theme['toggle-button']};
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
   ${SwitchInput}:checked + ${SwitchLabel} & {
