@@ -42,6 +42,7 @@ export const CheckoutPaymentButton = styled.button`
   flex: 1 0 0; 
   border-radius: 0.375rem;
   background: ${props => props.theme['base-button']}; 
+  border: none;
   cursor: pointer;
 
   &:hover{
