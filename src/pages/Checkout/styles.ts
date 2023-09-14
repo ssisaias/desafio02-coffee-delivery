@@ -4,7 +4,6 @@ export const CheckoutPageContainer = styled.div`
     margin-top: 36px;
     display: flex;
     flex-direction: row;
-
     h3{
         color: ${props => props.theme['base-subtitle']};
         font-family: 'Baloo 2';
@@ -12,11 +11,15 @@ export const CheckoutPageContainer = styled.div`
         font-style: normal;
         font-weight: 700;
         line-height: 130%;
+        margin-left: 4px;
     }
 
-    /* can remove later */
     div{
-        border: 0.5px solid #ccc;
+        ${
+        props => props.className === 'debug' && `
+            border: 0.3px solid #ccc;;
+        `
+        }
     }
 `
 

@@ -4,7 +4,8 @@ import { CheckoutPageAddressPaymentContainer, CheckoutPageContainer, CheckoutPag
 
 export function Checkout() {
   return (
-    <CheckoutPageContainer>
+    // comment/uncomment className below to see a lot of cool lines :)
+    <CheckoutPageContainer className='debug'>
       <CheckoutPageAddressPaymentContainer>
         <h3>Complete seu pedido</h3>
         <CheckoutAddressForm></CheckoutAddressForm>
