@@ -1,5 +1,5 @@
-import { CodepenLogo, MapPinLine } from "@phosphor-icons/react";
-import { CepInput, CheckoutAddressFormContainer, CheckoutAddressFormTitle, FormContainer } from "./styles";
+import { MapPinLine } from "@phosphor-icons/react";
+import { BairroInput, CepInput, CheckoutAddressFormContainer, CheckoutAddressFormTitle, CidadeInput, ComplementoInput, FormContainer, NumeroInput, RuaInput, UFInput } from "./styles";
 
 export function CheckoutAddressForm() {
   return (
@@ -12,9 +12,27 @@ export function CheckoutAddressForm() {
         </div>
       </CheckoutAddressFormTitle>
       <FormContainer>
-        <CepInput>
-          
+        <CepInput
+          placeholder="CEP">
         </CepInput>
+        <RuaInput
+          placeholder="Rua">
+        </RuaInput>
+        <NumeroInput
+          placeholder="Número">
+        </NumeroInput>
+        <ComplementoInput
+          placeholder="Complemento">
+        </ComplementoInput>
+        <BairroInput
+          placeholder="Bairro">
+        </BairroInput>
+        <CidadeInput
+          placeholder="Cidade">
+        </CidadeInput>
+        <UFInput
+          placeholder="UF">
+        </UFInput>
       </FormContainer>
     </CheckoutAddressFormContainer>
   );

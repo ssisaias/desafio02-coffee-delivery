@@ -28,10 +28,11 @@ export const CheckoutAddressFormTitle = styled.div`
 `
 export const FormContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
   align-self: stretch;  
+  flex-wrap: wrap;
 `
 
 const BaseInput = styled.input`
@@ -40,6 +41,9 @@ const BaseInput = styled.input`
   padding: 0.75rem;
   align-items: center;
   gap: 0.25rem; 
+  background: ${(props) => props.theme['base-input']};
+  border-radius: 0.25rem;
+  border: 1px${(props) => props.theme['base-button']}; 
 
   &:focus {
     box-shadow: none;
@@ -52,9 +56,31 @@ const BaseInput = styled.input`
 `
 
 export const CepInput = styled(BaseInput)`
-  flex: 1;
+  width: 30%;
 `
 
-export const MinutesAmountInput = styled(BaseInput)`
-  width: 4rem;
+export const RuaInput = styled(BaseInput)`
+  width: 70%;
+`
+
+export const NumeroInput = styled(BaseInput)`
+  width: 10%;
+`
+export const ComplementoInput = styled(BaseInput)`
+  width: 65%;
+  &::placeholder {
+    font-style: italic;
+  }
+`
+
+export const BairroInput = styled(BaseInput)`
+  width: 30%;
+`
+
+export const CidadeInput = styled(BaseInput)`
+  width: 50%;
+`
+
+export const UFInput = styled(BaseInput)`
+  width: 5%;
 `
