@@ -1,7 +1,41 @@
 import { MapPinLine } from "@phosphor-icons/react";
 import { BairroInput, CepInput, CheckoutAddressFormContainer, CheckoutAddressFormTitle, CidadeInput, ComplementoInput, FormContainer, NumeroInput, RuaInput, UFInput } from "./styles";
+import {z} from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export function CheckoutAddressForm() {
+
+  // this is our zod schema
+  const addressFormSchema = z.object({
+    cep: z.string().min(8, '*Obrigatório').max(8),
+    rua: z.string().min(1, '*Obrigatório').max(150),
+    numero: z.string().min(1, '*Obrigatório').max(999999),
+    complemento: z.string().min(0).max(150),
+    bairro: z.string().min(1, '*Obrigatório').max(100),
+    cidade: z.string().min(1, '*Obrigatório').max(100),
+    uf: z.string().min(2, '*Obrigatório').max(2),
+  });
+
+  // this is the infered type from the schema, to be used on the form
+  type checkoutAddressFormZType = z.infer<typeof addressFormSchema>;
+
+  // this is how we use react-hook-form with zod
+  const { register, handleSubmit, formState: {errors} } = useForm<checkoutAddressFormZType>({
+    resolver: zodResolver(addressFormSchema),
+  });
+
+  // the form submission function
+  const submitFormData = (data: checkoutAddressFormZType) => {
+    console.log('submit');
+    console.log(data);
+  }
+
+  const submitFormErrorHandler = (err: typeof errors) => {
+    console.log('errored');
+    console.log(err);
+  }
+
   return (
     <CheckoutAddressFormContainer>
       <CheckoutAddressFormTitle>
@@ -11,28 +45,36 @@ export function CheckoutAddressForm() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </div>
       </CheckoutAddressFormTitle>
-      <FormContainer>
-        <CepInput
-          placeholder="CEP">
-        </CepInput>
-        <RuaInput
-          placeholder="Rua">
-        </RuaInput>
-        <NumeroInput
-          placeholder="Número">
-        </NumeroInput>
-        <ComplementoInput
-          placeholder="Complemento">
-        </ComplementoInput>
-        <BairroInput
-          placeholder="Bairro">
-        </BairroInput>
-        <CidadeInput
-          placeholder="Cidade">
-        </CidadeInput>
-        <UFInput
-          placeholder="UF">
-        </UFInput>
+      <FormContainer onSubmit={handleSubmit(submitFormData, submitFormErrorHandler)}>
+          <CepInput type="text" {...register('cep')}
+            placeholder="CEP">
+          </CepInput>
+          <span>{errors.cep?.message}</span>
+          <RuaInput type="text" {...register('rua')}
+            placeholder="Rua">
+          </RuaInput>
+          <span>{errors.rua?.message}</span>
+          <NumeroInput type="text" {...register('numero')}
+            placeholder="Número">
+          </NumeroInput>
+          <span>{errors.numero?.message}</span>
+          <ComplementoInput type="text" {...register('complemento')}
+            placeholder="Complemento">
+          </ComplementoInput>
+          <span>{errors.complemento?.message}</span>
+          <BairroInput type="text" {...register('bairro')}
+            placeholder="Bairro">
+          </BairroInput>
+          <span>{errors.bairro?.message}</span>
+          <CidadeInput type="text" {...register('cidade')}
+            placeholder="Cidade">
+          </CidadeInput>
+          <span>{errors.cidade?.message}</span>
+          <UFInput type="text" {...register('uf')}
+            placeholder="UF">
+          </UFInput>
+          <span>{errors.uf?.message}</span>
+          <input type="submit" value="Continuar" />
       </FormContainer>
     </CheckoutAddressFormContainer>
   );

@@ -26,13 +26,16 @@ export const CheckoutAddressFormTitle = styled.div`
     color: ${props => props.theme['base-text']};
   }
 `
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1rem;
-  align-self: stretch;  
-  flex-wrap: wrap;
+export const FormContainer = styled.form`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    align-self: stretch;  
+    flex-wrap: wrap;
+    span{
+      color: ${props => props.theme['yellow-dark']};
+    }
 `
 
 const BaseInput = styled.input`
