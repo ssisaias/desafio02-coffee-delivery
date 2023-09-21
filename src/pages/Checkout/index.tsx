@@ -1,4 +1,5 @@
 import { CheckoutAddressForm } from "../../components/CheckoutAddressForm";
+import { CheckoutOrderSummary } from "../../components/CheckoutOrderSummary";
 import { CheckoutPaymentMethod } from "../../components/CheckoutPaymentMethod";
 import { CheckoutPageAddressPaymentContainer, CheckoutPageContainer, CheckoutPageSummaryContainer } from "./styles";
 
@@ -13,8 +14,8 @@ export function Checkout() {
       </CheckoutPageAddressPaymentContainer>
       <CheckoutPageSummaryContainer>
         <h3>Cafés selecionados</h3>
+        <CheckoutOrderSummary></CheckoutOrderSummary>
       </CheckoutPageSummaryContainer>
-      {/* <CheckoutOrderSummary></CheckoutOrderSummary> */}
       
     </CheckoutPageContainer>
   )
