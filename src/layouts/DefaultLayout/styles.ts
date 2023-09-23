@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const LayoutContainer = styled.div`
   margin: auto;
   text-align: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 
   @media (min-width: 768px) {
-    padding: 0 4rem;
+    padding: 0 2.5rem;
   }
 `
 export const ThemeToggleFooter = styled.div`
