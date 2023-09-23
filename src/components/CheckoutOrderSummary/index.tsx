@@ -1,4 +1,5 @@
-import { ConfirmationCardContainer, ConfirmationCardSubmitButton, ConfirmationCardSummaryText, ConfirmationCardSummaryTotalText } from "./styles";
+import { ConfirmationCardContainer, ConfirmationCardSubmitButton, ConfirmationCardSummaryText } from "./styles";
+import { ConfirmationItemList } from "./ConfirmationItemsList";
 
 const cofeesmock = [
   {
@@ -19,12 +20,22 @@ const cofeesmock = [
 }
 ];
 
+const coffeeList = cofeesmock;
+
 export function CheckoutOrderSummary() {
 
   return (
     <ConfirmationCardContainer>
-
-      <hr></hr>
+    {coffeeList.length > 0 ?
+      <> 
+          {coffeeList.map(coffee => (
+            <>
+              <ConfirmationItemList key={coffee.id} coffeeItem={coffee} />
+              <hr></hr>
+            </>
+          ))}
+      </>  :
+      <h3>Carrinho vazio.</h3> }
       <ConfirmationCardSummaryText>
         <div><span>Total de Itens</span><span>R$ 29.99</span></div>
       

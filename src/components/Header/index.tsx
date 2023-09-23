@@ -31,7 +31,7 @@ export function Header() {
               <ShoppingCart size={24}/> <span>{cartTotalItems}</span>
             
           </CartButton>
-          </NavLink>
+        </NavLink>
         
       </nav>
     </HeaderContainer>

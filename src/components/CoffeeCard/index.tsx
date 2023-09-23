@@ -1,15 +1,11 @@
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react"
-import { CoffeeInterface } from "../../interface/interfaces"
 import images from "../../util/imageResolver"
 import { SquareIconBg } from "../ui/IconBackground/styles"
 import { CCAddToCartButton, CCAddToCartContainer, CCAddToCartPriceTag, CCAddToCartQuantity } from "./coffeeCardAddToCart/styles"
 import { CCHeaderImg } from "./coffeeCardImgHeader/styles"
 import { CCHeaderTag, CCHeaderTags } from "./coffeeCardTags/styles"
 import { CoffeeCardContainer, CCNameDescriptionContainer } from "./styles"
-
-interface CoffeeCardProps {
-  coffeeItem: CoffeeInterface
-}
+import { CoffeeCardProps } from "../../props/commonsProps"
 
 
 export function CoffeeCard({ coffeeItem }: CoffeeCardProps) {
