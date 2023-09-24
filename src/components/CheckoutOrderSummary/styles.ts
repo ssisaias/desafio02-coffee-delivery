@@ -7,7 +7,7 @@ export const ConfirmationCardContainer = styled.div`
     width: -moz-available;
     width: -webkit-fill-available;
     width: stretch;
-    padding: 2.5rem;
+    padding: 2rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem; 

@@ -9,6 +9,7 @@ export const CheckoutSummaryItemCard = styled.div`
     background: ${props => props.theme['base-card']};
     text-align: left;
     color: ${props => props.theme['base-subtitle']};
+    overflow: scroll;
     
     img {
         display: flex;
