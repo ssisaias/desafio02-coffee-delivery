@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components";
 import { darkTheme, defaultTheme } from "../styles/themes/default";
 import { createContext, useState } from "react";
+import { CommonProviderProps } from "../interface/interfaces";
 
 interface ThemeContextType {
     currentTheme: DefaultTheme,
@@ -9,11 +10,7 @@ interface ThemeContextType {
 
 export const ThemeContext = createContext({} as ThemeContextType)
 
-interface ThemeContextProviderProps{
-    children: React.ReactNode;
-}
-
-export function ThemeContextProvider({children}: ThemeContextProviderProps){
+export function ThemeContextProvider({children}: CommonProviderProps){
     const [curTheme, setTheme] = useState(defaultTheme);
 
     function changeTheme(theme: string){
