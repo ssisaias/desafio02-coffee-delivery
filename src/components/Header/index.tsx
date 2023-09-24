@@ -5,12 +5,16 @@ import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 import { LocationButton } from './LocationButton/styles';
 import { CartButton } from './Cartbutton/styles';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 
 const currentCity = `Uh, sama lama duma lama, you assumin' I'm a human`;
-const cartTotalItems = 0;
 
 export function Header() {
+  
+  const cartContext = useContext(CartContext);
+
   return (
     <HeaderContainer>
       <NavLink to={'/'} title='checkout'>
@@ -28,7 +32,7 @@ export function Header() {
         <NavLink to={'/checkout'} title='checkout'>
           <CartButton>
             
-              <ShoppingCart size={24}/> <span>{cartTotalItems}</span>
+              <ShoppingCart size={24}/> <span>{cartContext.getItemQuantity()}</span>
             
           </CartButton>
         </NavLink>

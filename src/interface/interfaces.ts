@@ -12,13 +12,13 @@ export interface CoffeeInterface {
 
 export interface Cart {
     uuid: string
-    createdDate: string
+    createdDate: Date
     items: CartItem[]
-    total: number
-    status: string
-    deliveryAmount: number
-    deliveryAddress: DeliveryAddress
-    selectedPaymentMethod: string
+    totalPrice?: number
+    status?: string
+    deliveryAmount?: number
+    deliveryAddress?: DeliveryAddress
+    selectedPaymentMethod?: string
 }
 
 export interface CartItem {
