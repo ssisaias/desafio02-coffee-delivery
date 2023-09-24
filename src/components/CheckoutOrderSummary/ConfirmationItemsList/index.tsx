@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 export function ConfirmationItemList({ coffeeItem, quantity }: CoffeeCardProps) {
 
-  const { setItemQuantity } = useContext(CartContext);
+  const { setItemQuantity, removeItem } = useContext(CartContext);
 
   function handleQuantityIncrease() {
     if (quantity && quantity < 99) {
@@ -28,6 +28,12 @@ export function ConfirmationItemList({ coffeeItem, quantity }: CoffeeCardProps) 
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
   }
 
+  function handleRemoveItem(id: string) {
+    return () => {
+      removeItem(id);
+    }
+  }
+
   return (
     <CheckoutSummaryItemCard>
       <img src={images[coffeeItem.image]} alt="cart-item" />
@@ -39,7 +45,7 @@ export function ConfirmationItemList({ coffeeItem, quantity }: CoffeeCardProps) 
             <span>{quantity}</span>
             <button onClick={handleQuantityIncrease}><Plus weight="regular" size={'0.875rem'} color="#8047F8"></Plus></button>
           </CheckoutSummaryQuantityButtons>
-          <CheckoutSummaryRemoveButton>
+          <CheckoutSummaryRemoveButton onClick={handleRemoveItem(coffeeItem.id)}>
             <Trash weight="regular" color="#8047F8"></Trash> <span>Remover</span>
           </CheckoutSummaryRemoveButton>
         </CSMiddleContainer>

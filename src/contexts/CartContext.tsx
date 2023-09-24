@@ -7,6 +7,7 @@ interface CartContextType {
   addItemToCart: (item: CartItem) => void,
   getItemQuantity: () => number,
   setItemQuantity: (itemId: string, quantity: number) => void,
+  removeItem : (itemId: string) => void
 }
 
 const newCart: Cart = {
@@ -45,6 +46,11 @@ export function CartContextProvider({ children }: CommonProviderProps) {
     return cart.items.length;
   }
 
+  function removeItem(itemId: string){
+    cart.items = cart.items.filter(i => i.CoffeeItem.id !== itemId);
+    recalcTotals();
+  }
+
   function recalcTotals() {
     let totalPrice = 0;
     cart.items.forEach(item => {
@@ -55,7 +61,7 @@ export function CartContextProvider({ children }: CommonProviderProps) {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity }}>
+    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity, removeItem }}>
       {children}
     </CartContext.Provider>
   );
