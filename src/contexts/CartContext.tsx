@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 interface CartContextType {
   cart: Cart,
   addItemToCart: (item: CartItem) => void,
-  getItemQuantity: () => number
+  getItemQuantity: () => number,
+  setItemQuantity: (itemId: string, quantity: number) => void,
 }
 
 const newCart: Cart = {
@@ -29,15 +30,32 @@ export function CartContextProvider({ children }: CommonProviderProps) {
     } else {
       cart.items.push(item);
     }
-    setCart({ ...cart });
+    recalcTotals();
+  }
+
+  function setItemQuantity(itemId: string, quantity: number) {
+    const itemInCart = cart.items.find(i => i.CoffeeItem.id === itemId);
+    if (itemInCart) {
+      itemInCart.quantity = quantity;
+    }
+    recalcTotals();
   }
 
   function getItemQuantity() {
     return cart.items.length;
   }
 
+  function recalcTotals() {
+    let totalPrice = 0;
+    cart.items.forEach(item => {
+      totalPrice += item.CoffeeItem.price * item.quantity;
+    });
+    cart.totalPrice = totalPrice;
+    setCart({ ...cart });
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity }}>
+    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,47 +1,34 @@
 import { ConfirmationCardContainer, ConfirmationCardSubmitButton, ConfirmationCardSummaryText } from "./styles";
 import { ConfirmationItemList } from "./ConfirmationItemsList";
-
-const cofeesmock = [
-  {
-    "id": "1",
-    "name": "Expresso Tradicional",
-    "description": "O tradicional café feito com água quente e grãos moídos",
-    "price": 9.90,
-    "tags": ["tradicional","tradicional", "tradicional"],
-    "image": "Expresso"
-},
-{
-    "id": "2",
-    "name": "Expresso Americano",
-    "description": "Expresso diluído, menos intenso que o tradicional",
-    "price": 9.90,
-    "tags": ["especial", "alcoolico", "gelado"],
-    "image": "Americano"
-}
-];
-
-const coffeeList = cofeesmock;
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function CheckoutOrderSummary() {
 
+  const { cart } = useContext(CartContext);
+
+  function formatCartPrice() {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(cart.totalPrice+cart.deliveryAmount);
+  }
+
   return (
     <ConfirmationCardContainer>
-    {coffeeList.length > 0 ?
+    {cart.items.length > 0 ?
       <> 
-          {coffeeList.map(coffee => (
+          {cart.items.map(coffee => (
             <>
-              <ConfirmationItemList key={coffee.id} coffeeItem={coffee} />
+              <ConfirmationItemList key={coffee.CoffeeItem.id} coffeeItem={coffee.CoffeeItem} quantity={coffee.quantity}/>
               <hr></hr>
             </>
           ))}
       </>  :
       <h3>Carrinho vazio.</h3> }
       <ConfirmationCardSummaryText>
-        <div><span>Total de Itens</span><span>R$ 29.99</span></div>
+        <div><span>Total de Itens</span><span>{cart.totalPrice.toLocaleString('pt-BR')}</span></div>
       
-        <div><span>Entrega</span><span>R$ 3.50</span></div>
+        <div><span>Entrega</span><span>{cart.deliveryAmount.toLocaleString('pt-BR')}</span></div>
       
-        <div><h4>Total</h4><h4>R$ 33.49</h4></div>
+        <div><h4>Total</h4><h4>{formatCartPrice()}</h4></div>
       </ConfirmationCardSummaryText>
       <ConfirmationCardSubmitButton
       onClick={() => console.log('clicou')}>

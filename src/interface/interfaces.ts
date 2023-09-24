@@ -14,9 +14,8 @@ export interface Cart {
     uuid: string
     createdDate: Date
     items: CartItem[]
-    totalPrice?: number
-    status?: string
-    deliveryAmount?: number
+    totalPrice: number
+    deliveryAmount: number
     deliveryAddress?: DeliveryAddress
     selectedPaymentMethod?: string
 }
