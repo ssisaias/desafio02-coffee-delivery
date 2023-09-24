@@ -7,7 +7,8 @@ interface CartContextType {
   addItemToCart: (item: CartItem) => void,
   getItemQuantity: () => number,
   setItemQuantity: (itemId: string, quantity: number) => void,
-  removeItem : (itemId: string) => void
+  removeItem : (itemId: string) => void,
+  setPaymentMethod: (paymentMethod: string) => void,
 }
 
 const newCart: Cart = {
@@ -60,8 +61,13 @@ export function CartContextProvider({ children }: CommonProviderProps) {
     setCart({ ...cart });
   }
 
+  function setPaymentMethod(paymentMethod: string) {
+    cart.selectedPaymentMethod = paymentMethod;
+    setCart({ ...cart });
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity, removeItem }}>
+    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity, removeItem, setPaymentMethod }}>
       {children}
     </CartContext.Provider>
   );

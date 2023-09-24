@@ -34,14 +34,13 @@ export const CheckoutPaymentButtonContainer = styled.div`
   align-self: stretch; 
 `
 
-export const CheckoutPaymentButton = styled.button`
+export const CheckoutPaymentButton = styled.button<{ $active?: boolean; }>`
   display: flex;
   padding: 0.5rem;
   align-items: center;
   gap: 0.5rem;
   flex: min-content; 
-  border-radius: 0.375rem;
-  background: ${props => props.theme['base-button']}; 
+  border-radius: 0.375rem; 
   border: none;
   cursor: pointer;
   justify-content: center;
@@ -50,5 +49,7 @@ export const CheckoutPaymentButton = styled.button`
     background: ${props => props.theme['base-button-hover']}; 
   }
 
+
+  background: ${props => props.$active ? props.theme['yellow-dark'] : props.theme['base-button']};
 `
 
