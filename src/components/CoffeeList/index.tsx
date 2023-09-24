@@ -2,7 +2,6 @@ import { CoffeeListContainer, CCList } from "./styles";
 import coffees  from '../../db/coffees.json';
 import { CoffeeCard } from "../CoffeeCard";
 
-const emptyCoffeeList = [];
 const coffeeList = coffees;
 
 export function CoffeeList() {
