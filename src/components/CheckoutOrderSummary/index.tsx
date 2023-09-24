@@ -22,7 +22,7 @@ export function CheckoutOrderSummary() {
             </>
           ))}
       </>  :
-      <h3>Carrinho vazio.</h3> }
+      <h3>Carrinho vazio. 😿</h3> }
       <ConfirmationCardSummaryText>
         <div><span>Total de Itens</span><span>{cart.totalPrice.toLocaleString('pt-BR')}</span></div>
       
@@ -30,7 +30,9 @@ export function CheckoutOrderSummary() {
       
         <div><h4>Total</h4><h4>{formatCartPrice()}</h4></div>
       </ConfirmationCardSummaryText>
-      <ConfirmationCardSubmitButton
+      <ConfirmationCardSubmitButton 
+      type="submit"
+      form="address-form"
       onClick={() => console.log('clicou')}>
         <span>CONFIRMAR PEDIDO</span>
       </ConfirmationCardSubmitButton>

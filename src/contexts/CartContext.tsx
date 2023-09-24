@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Cart, CartItem, CommonProviderProps } from "../interface/interfaces";
+import { Cart, CartItem, CommonProviderProps, DeliveryAddress } from "../interface/interfaces";
 import { v4 as uuidv4 } from 'uuid';
 
 interface CartContextType {
@@ -7,8 +7,9 @@ interface CartContextType {
   addItemToCart: (item: CartItem) => void,
   getItemQuantity: () => number,
   setItemQuantity: (itemId: string, quantity: number) => void,
-  removeItem : (itemId: string) => void,
+  removeItem: (itemId: string) => void,
   setPaymentMethod: (paymentMethod: string) => void,
+  setCartAddress: (address: DeliveryAddress) => void,
 }
 
 const newCart: Cart = {
@@ -47,7 +48,7 @@ export function CartContextProvider({ children }: CommonProviderProps) {
     return cart.items.length;
   }
 
-  function removeItem(itemId: string){
+  function removeItem(itemId: string) {
     cart.items = cart.items.filter(i => i.CoffeeItem.id !== itemId);
     recalcTotals();
   }
@@ -66,8 +67,21 @@ export function CartContextProvider({ children }: CommonProviderProps) {
     setCart({ ...cart });
   }
 
+  function setCartAddress(address: DeliveryAddress) {
+    cart.deliveryAddress = address;
+    setCart({ ...cart });
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addItemToCart, getItemQuantity, setItemQuantity, removeItem, setPaymentMethod }}>
+    <CartContext.Provider value={{
+      cart,
+      addItemToCart,
+      getItemQuantity,
+      setItemQuantity,
+      removeItem,
+      setPaymentMethod,
+      setCartAddress
+    }}>
       {children}
     </CartContext.Provider>
   );

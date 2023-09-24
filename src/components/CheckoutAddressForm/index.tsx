@@ -3,8 +3,13 @@ import { BairroInput, CepInput, CheckoutAddressFormContainer, CheckoutAddressFor
 import {z} from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
+import { DeliveryAddress } from "../../interface/interfaces";
 
 export function CheckoutAddressForm() {
+
+  const { setCartAddress } = useContext(CartContext);
 
   // this is our zod schema
   const addressFormSchema = z.object({
@@ -27,8 +32,16 @@ export function CheckoutAddressForm() {
 
   // the form submission function
   const submitFormData = (data: checkoutAddressFormZType) => {
-    console.log('submit');
-    console.log(data);
+    const cartAddress: DeliveryAddress = {
+      cep: data.cep,
+      street: data.rua,
+      number: data.numero,
+      complement: data.complemento,
+      neighborhood: data.bairro,
+      city: data.cidade,
+      state: data.uf,
+    }
+    setCartAddress(cartAddress);
   }
 
   const submitFormErrorHandler = (err: typeof errors) => {
@@ -45,7 +58,7 @@ export function CheckoutAddressForm() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </div>
       </CheckoutAddressFormTitle>
-      <FormContainer onSubmit={handleSubmit(submitFormData, submitFormErrorHandler)}>
+      <FormContainer id="address-form" onSubmit={handleSubmit(submitFormData, submitFormErrorHandler)}>
           <CepInput type="text" {...register('cep')}
             placeholder="CEP">
           </CepInput>
@@ -74,7 +87,6 @@ export function CheckoutAddressForm() {
             placeholder="UF">
           </UFInput>
           <span>{errors.uf?.message}</span>
-          <input type="submit" value="Continuar" />
       </FormContainer>
     </CheckoutAddressFormContainer>
   );
