@@ -6,10 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { DeliveryAddress } from "../../interface/interfaces";
-
+import { toast } from 'react-toastify';
 export function CheckoutAddressForm() {
 
-  const { setCartAddress } = useContext(CartContext);
+  const { cart, setCartAddress } = useContext(CartContext);
 
   // this is our zod schema
   const addressFormSchema = z.object({
@@ -28,6 +28,15 @@ export function CheckoutAddressForm() {
   // this is how we use react-hook-form with zod
   const { register, handleSubmit, formState: {errors} } = useForm<checkoutAddressFormZType>({
     resolver: zodResolver(addressFormSchema),
+    defaultValues: {
+      cep: (cart.deliveryAddress?.cep || ''),
+      rua: (cart.deliveryAddress?.street || ''),
+      numero: (cart.deliveryAddress?.number || ''),
+      complemento: (cart.deliveryAddress?.complement || ''),
+      bairro: (cart.deliveryAddress?.neighborhood || ''),
+      cidade: (cart.deliveryAddress?.city || ''),
+      uf: (cart.deliveryAddress?.state || ''),
+    }
   });
 
   // the form submission function
@@ -41,11 +50,19 @@ export function CheckoutAddressForm() {
       city: data.cidade,
       state: data.uf,
     }
+    if(!cart.selectedPaymentMethod){
+      toast.warn("Selecione um método de pagamento");
+      return;
+    }
+    if(cart.totalPrice <= 0){
+      toast.info("Carrinho vazio.");
+      return;
+    }
     setCartAddress(cartAddress);
   }
 
   const submitFormErrorHandler = (err: typeof errors) => {
-    console.log('errored');
+    toast.warn("Endereço Inválido, verifique e tente novamente.");
     console.log(err);
   }
 

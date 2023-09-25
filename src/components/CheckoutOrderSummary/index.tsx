@@ -32,8 +32,7 @@ export function CheckoutOrderSummary() {
       </ConfirmationCardSummaryText>
       <ConfirmationCardSubmitButton 
       type="submit"
-      form="address-form"
-      onClick={() => console.log('clicou')}>
+      form="address-form">
         <span>CONFIRMAR PEDIDO</span>
       </ConfirmationCardSubmitButton>
     </ConfirmationCardContainer>

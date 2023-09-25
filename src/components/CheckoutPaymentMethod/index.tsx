@@ -4,11 +4,11 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 export function CheckoutPaymentMethod() {
-
-  const [ccActive, setccActive] = useState(false);
-  const [cdActive, setcdActive] = useState(false);
-  const [moneyActive, setmoneyActive] = useState(false);
-  const {setPaymentMethod} = useContext(CartContext);
+  
+  const {cart, setPaymentMethod} = useContext(CartContext);
+  const [ccActive, setccActive] = useState(cart.selectedPaymentMethod === 'CARTÃO DE CRÉDITO');
+  const [cdActive, setcdActive] = useState(cart.selectedPaymentMethod === 'CARTÃO DE DÉBITO');
+  const [moneyActive, setmoneyActive] = useState(cart.selectedPaymentMethod === 'DINHEIRO');
 
   function handleSetPaymentMethod(payId: number) {
 
