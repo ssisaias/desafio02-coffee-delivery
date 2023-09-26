@@ -3,13 +3,15 @@ import { BairroInput, CepInput, CheckoutAddressFormContainer, CheckoutAddressFor
 import {z} from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { DeliveryAddress } from "../../interface/interfaces";
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 export function CheckoutAddressForm() {
-
-  const { setCartAddress } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { cart, setCartAddress } = useContext(CartContext);
 
   // this is our zod schema
   const addressFormSchema = z.object({
@@ -26,9 +28,42 @@ export function CheckoutAddressForm() {
   type checkoutAddressFormZType = z.infer<typeof addressFormSchema>;
 
   // this is how we use react-hook-form with zod
-  const { register, handleSubmit, formState: {errors} } = useForm<checkoutAddressFormZType>({
+  const { register, handleSubmit, formState: {errors}, setValue } = useForm<checkoutAddressFormZType>({
     resolver: zodResolver(addressFormSchema),
+    defaultValues: {
+      cep: (cart.deliveryAddress?.cep || ''),
+      rua: (cart.deliveryAddress?.street || ''),
+      numero: (cart.deliveryAddress?.number || ''),
+      complemento: (cart.deliveryAddress?.complement || ''),
+      bairro: (cart.deliveryAddress?.neighborhood || ''),
+      cidade: (cart.deliveryAddress?.city || ''),
+      uf: (cart.deliveryAddress?.state || ''),
+    }
   });
+
+  useEffect(() => {
+    const deliveryDetails = localStorage.getItem('app-coffee-delivery-details');
+    if(!cart.deliveryAddress?.city){
+      if (deliveryDetails) {
+        const deliveryDetailsParsed = JSON.parse(deliveryDetails);
+        if(cart.deliveryAddress?.city !== deliveryDetailsParsed.city) {
+          setValue('cep', deliveryDetailsParsed.cep);
+          setValue('rua', deliveryDetailsParsed.street);
+          setValue('numero', deliveryDetailsParsed.number);
+          setValue('complemento', deliveryDetailsParsed.complement);
+          setValue('bairro', deliveryDetailsParsed.neighborhood);
+          setValue('cidade', deliveryDetailsParsed.city);
+          setValue('uf', deliveryDetailsParsed.state);
+          setCartAddress(deliveryDetailsParsed);
+        }
+      }
+    } else {
+      if(cart.deliveryAddress?.city){
+        localStorage.setItem('app-coffee-delivery-details', JSON.stringify(cart.deliveryAddress));
+      }
+    }
+    console.log('address changed - effect')
+  }, [cart.deliveryAddress, setCartAddress, setValue])
 
   // the form submission function
   const submitFormData = (data: checkoutAddressFormZType) => {
@@ -41,11 +76,20 @@ export function CheckoutAddressForm() {
       city: data.cidade,
       state: data.uf,
     }
+    if(!cart.selectedPaymentMethod){
+      toast.warn("Selecione um método de pagamento");
+      return;
+    }
+    if(cart.totalPrice <= 0){
+      toast.info("Carrinho vazio.");
+      return;
+    }
     setCartAddress(cartAddress);
+    navigate('/checkout-confirmation');
   }
 
   const submitFormErrorHandler = (err: typeof errors) => {
-    console.log('errored');
+    toast.warn("Endereço Inválido, verifique e tente novamente.");
     console.log(err);
   }
 

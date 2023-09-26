@@ -12,6 +12,8 @@ export function Banner() {
                 <span>Com o Cooffee Delivery você recebe seu café onde estiver, a qualquer hora</span>
                 <TwoColumnsTable>
                     <table >
+                        <thead></thead>
+                        <tbody>
                         <tr>
                             <td><RoundIconBg $themeBgColor="yellow-dark"><ShoppingCart /></RoundIconBg></td>
                             <td>Compra Simples e Segura</td>
@@ -28,6 +30,7 @@ export function Banner() {
                             <td><RoundIconBg $themeBgColor="purple"><Coffee /></RoundIconBg></td>
                             <td>O café chega fresquinho até você</td>
                         </tr>
+                        </tbody>
                     </table>
                 </TwoColumnsTable>
             </div>

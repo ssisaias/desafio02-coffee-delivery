@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const LocationButton = styled.button`
+export const LocationButtonContainer = styled.button`
  background-color: ${(props) => props.theme['purple-light']};
   color: ${(props) => props.theme['purple-dark']};
   border: none;

@@ -44,7 +44,7 @@ export function CoffeeCard({ coffeeItem }: CoffeeCardProps) {
       </CCHeaderImg>
       <CCHeaderTags>
         {coffeeItem.tags?.map((tag) => {
-          return <CCHeaderTag>{tag}</CCHeaderTag>
+          return <CCHeaderTag key={tag}>{tag}</CCHeaderTag>
         })}
       </CCHeaderTags>
       <CCNameDescriptionContainer>

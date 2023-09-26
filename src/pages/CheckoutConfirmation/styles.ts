@@ -8,6 +8,7 @@ export const CheckoutConfirmationContainer = styled.div`
     height: 100%;
     padding: 0 20px;
     text-align: justify;
+    justify-content: space-between;
     
     h1{
         /* Title/Title L */

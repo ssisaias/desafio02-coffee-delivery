@@ -1,17 +1,21 @@
 import { MapPin, Money, Timer } from "@phosphor-icons/react";
 import { RoundIconBg } from "../ui/IconBackground/styles";
 import { CheckoutConfirmationOrderInfoContainer } from "./styles";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function CheckoutConfirmationOrderInfo() {
+
+  const { cart } = useContext(CartContext);
   return (
     <CheckoutConfirmationOrderInfoContainer>
       <table >
         <tr>
           <td><RoundIconBg $themeBgColor="purple"><MapPin /></RoundIconBg></td>
           <td>
-            <span>Entrega em <strong>Rua Joao Daniel Matinellu, 102</strong></span>
+            <span>Entrega em <strong>{cart.deliveryAddress?.street}, {cart.deliveryAddress?.number}</strong></span>
             <br />
-            <span>Farros  - Porto Alegre, RS</span>
+            <span>{cart.deliveryAddress?.neighborhood}  - {cart.deliveryAddress?.city}, {cart.deliveryAddress?.state}</span>
           </td>
         </tr>
         <tr>
@@ -24,7 +28,7 @@ export function CheckoutConfirmationOrderInfo() {
           <td><RoundIconBg $themeBgColor="yellow"><Money /></RoundIconBg></td>
           <span>Pagamento na Entrega</span>
           <br />
-          <span><strong>Cartão de Crédito</strong></span>
+          <span><strong>{cart.selectedPaymentMethod}</strong></span>
         </tr>
       </table>
     </CheckoutConfirmationOrderInfoContainer>
