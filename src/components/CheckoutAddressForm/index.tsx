@@ -7,8 +7,10 @@ import { useContext, useEffect } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { DeliveryAddress } from "../../interface/interfaces";
 import { toast } from 'react-toastify';
-export function CheckoutAddressForm() {
+import { useNavigate } from "react-router-dom";
 
+export function CheckoutAddressForm() {
+  const navigate = useNavigate();
   const { cart, setCartAddress } = useContext(CartContext);
 
   // this is our zod schema
@@ -83,6 +85,7 @@ export function CheckoutAddressForm() {
       return;
     }
     setCartAddress(cartAddress);
+    navigate('/checkout-confirmation');
   }
 
   const submitFormErrorHandler = (err: typeof errors) => {
