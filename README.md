@@ -5,12 +5,14 @@ pnpm install
 pnpm dev
 
 
-## Technologies / Libs
+## Tags
+ #React Router DOM
+ #Styled Components
+ #React hook forms
+ #zod
+ #Phospor icons
+ #Local Storage
 
- - React Router DOM
- - Styled Components
- - React hook forms + zod
- - Phospor icons
 
 ## bonus feats
  - dark mode
